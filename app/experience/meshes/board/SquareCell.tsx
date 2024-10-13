@@ -23,8 +23,8 @@ export function SquareCell({
     const color = useMemo(() => {
         const isEvenFile = file.charCodeAt(0) % 2 === 0
         const isEvenRank = rank % 2 === 0
-        if (isCaptureMove) return 'red'
-        if (isAvailableMove) return 'green'
+        if (isCaptureMove) return '#FF474D'
+        if (isAvailableMove) return '#90EE90'
         return (isEvenFile && !isEvenRank) || (!isEvenFile && isEvenRank)
             ? 'black'
             : 'white'
@@ -51,6 +51,7 @@ export function SquareCell({
                 color={color}
                 roughness={0.3} // Slight roughness for a realistic feel
                 metalness={0.0} // Non-metallic look
+                side={THREE.DoubleSide} // Enable double-sided rendering
             />
         </mesh>
 

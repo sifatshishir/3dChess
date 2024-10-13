@@ -20,12 +20,6 @@ export default function Home() {
         <div className={`home ${isGameStart ? 'start' : ''}`}>
             <Controls game={game} gameActions={gameActions} />
             <Canvas>
-                <perspectiveCamera
-                    position={[0, 3, 5]} // Initial camera position
-                    fov={75} // Field of view
-                    near={0.1} // Near clipping plane
-                    far={1000} // Far clipping plane
-                />
                 {/*<XR>*/}
                     <Experience game={game} gameActions={gameActions} />
                 {/*</XR>*/}

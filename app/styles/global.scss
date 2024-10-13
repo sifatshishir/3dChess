@@ -14,6 +14,8 @@ body,
     &.start {
         canvas {
             opacity: 1;
+            background: linear-gradient(45deg, #168fff, #ff7e5f); /* Change colors as desired */
+            transition: all 0.3s ease-in-out;
         }
     }
 
@@ -47,8 +49,6 @@ body,
                 font-size: 2.5rem;
                 font-weight: 600;
             }
-
-
 
             &.white {
                 color: white;

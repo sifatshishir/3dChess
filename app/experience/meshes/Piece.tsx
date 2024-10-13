@@ -1,3 +1,4 @@
+import { useLoader } from '@react-three/fiber';
 import { usePiecePosition } from '@/app/hooks/usePiecePosition'
 import { ChessFile } from '@/app/types/chess-file'
 import { ChessRank } from '@/app/types/chess-rank'
@@ -19,9 +20,9 @@ import { on } from 'events'
 import { useAddToY } from '@/app/hooks/useAddToY'
 
 export type PieceProps = {
-    onPieceClick: (piece: PieceData) => void
-    isSelected: boolean
-} & PieceData
+    onPieceClick: (piece: PieceData) => void;
+    isSelected: boolean;
+} & PieceData;
 
 export function Piece({
                           rank,
@@ -33,14 +34,14 @@ export function Piece({
                           isSelected,
                           onPieceClick,
                       }: PieceProps) {
-    const chessPosition = useMemo(() => ({ rank, file }), [rank, file])
-    const { x, z } = usePiecePosition(chessPosition, true)
-    const addToY = useAddToY(isSelected)
-    const ref = useRef<THREE.Group>(null) // Reference for the main piece
+    const chessPosition = useMemo(() => ({ rank, file }), [rank, file]);
+    const { x, z } = usePiecePosition(chessPosition, true);
+    const addToY = useAddToY(isSelected);
+    const ref = useRef<THREE.Group>(null);
 
     const props = useMemo(() => {
-        const { positionY, scale } = pieceUtils.getPieceStats(piece)
-        const color = rival === 'black' ? '#000000' : '#ffffff'
+        const { positionY, scale } = pieceUtils.getPieceStats(piece);
+        const color = rival === 'black' ? '#000000' : '#ffffff'; // Lighter gray for black pieces, off-white for white pieces
         return {
             'position-x': x,
             'position-y': positionY + addToY,
@@ -49,16 +50,17 @@ export function Piece({
             scale,
             material: new THREE.MeshPhysicalMaterial({
                 color: color,
-                transparent: false,
-                opacity: 1.0,
-                roughness: 0.1,
-                metalness: 0.0,
+                transparent: true, // Enable transparency
+                opacity: 0.9, // Set opacity for glass effect
+                roughness: 0.2, // Low roughness for more reflection
+                metalness: 0.3, // Higher value for more reflection
+                envMapIntensity: .1, // Intensity of the reflection
             }),
             onClick: () => {
-                onPieceClick({ rank, file, type: piece, rival, isMoved, id })
+                onPieceClick({ rank, file, type: piece, rival, isMoved, id });
             },
-        }
-    }, [piece, x, z, rival, rank, file, isMoved, onPieceClick, id, addToY])
+        };
+    }, [piece, x, z, rival, rank, file, isMoved, onPieceClick, id, addToY]);
 
     useEffect(() => {
         if (!ref.current) return;
@@ -66,7 +68,7 @@ export function Piece({
         // Create the outline when the piece is added
         const pieceMesh = ref.current.children[0] as THREE.Mesh;
         if (pieceMesh && pieceMesh.geometry) {
-            const outlineMaterial = new THREE.LineBasicMaterial({ color: '#000000', linewidth: 2 });
+            const outlineMaterial = new THREE.LineBasicMaterial({ color: '#000000', linewidth: 2 }); // Change outline color to white
             const edges = new THREE.EdgesGeometry(pieceMesh.geometry);
             const outline = new THREE.LineSegments(edges, outlineMaterial);
 
@@ -82,22 +84,22 @@ export function Piece({
                 let pieceMesh;
                 switch (piece) {
                     case 'king':
-                        pieceMesh = <King {...props} />
+                        pieceMesh = <King {...props} />;
                         break;
                     case 'queen':
-                        pieceMesh = <Queen {...props} />
+                        pieceMesh = <Queen {...props} />;
                         break;
                     case 'bishop':
-                        pieceMesh = <Bishop {...props} />
+                        pieceMesh = <Bishop {...props} />;
                         break;
                     case 'knight':
-                        pieceMesh = <Knight {...props} />
+                        pieceMesh = <Knight {...props} />;
                         break;
                     case 'rook':
-                        pieceMesh = <Rook {...props} />
+                        pieceMesh = <Rook {...props} />;
                         break;
                     case 'pawn':
-                        pieceMesh = <Pawn {...props} />
+                        pieceMesh = <Pawn {...props} />;
                         break;
                     default:
                         return null;
@@ -106,5 +108,5 @@ export function Piece({
                 return pieceMesh;
             })()}
         </group>
-    )
+    );
 }
