@@ -52,13 +52,6 @@ export function Experience({ game, gameActions }: ExperienceProps) {
 
     return (
         <>
-            <perspectiveCamera
-                makeDefault
-                position={[0, 3, 5]} // Initial camera position
-                fov={75} // Field of view
-                near={0.1} // Near clipping plane
-                far={1000} // Far clipping plane
-            />
             <OrbitControls
                 ref={controlsRef} // Assign the ref here
                 enablePan={true} // Allow panning
