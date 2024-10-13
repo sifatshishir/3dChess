@@ -7,6 +7,7 @@ import { Experience } from './experience/Experience';
 import { useGame } from './hooks/useGame';
 import { Controls } from './controls/Controls';
 import { useMemo } from 'react';
+import {Analytics} from '@vercel/analytics/react';
 
 export default function Home() {
     const [game, gameActions] = useGame();
@@ -29,6 +30,7 @@ export default function Home() {
                     <Experience game={game} gameActions={gameActions} />
                 {/*</XR>*/}
             </Canvas>
+            <Analytics/>
             {/*<ARButton /> /!* AR Button for activating AR mode *!/*/}
         </div>
     );
