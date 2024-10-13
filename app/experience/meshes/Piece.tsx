@@ -64,10 +64,10 @@ export function Piece({
         if (!ref.current) return;
 
         // Create the outline when the piece is added
-        const pieceMesh = ref.current.children[0];
+        const pieceMesh = ref.current.children[0] as THREE.Mesh;
         if (pieceMesh && pieceMesh.geometry) {
             const outlineMaterial = new THREE.LineBasicMaterial({ color: '#000000', linewidth: 2 });
-            const edges = new THREE.EdgesGeometry(ref.current.children[0].geometry);
+            const edges = new THREE.EdgesGeometry(pieceMesh.geometry);
             const outline = new THREE.LineSegments(edges, outlineMaterial);
 
             // Add the outline to the piece

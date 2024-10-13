@@ -1,17 +1,16 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons'
-import { GameActions } from '@/app/hooks/useGame'
+import React from 'react';
+import { GameActions } from '@/app/hooks/useGame';
 
 type OptionsProps = {
-    gameActions: GameActions
-}
+    gameActions: GameActions;
+};
 
-export function Options({ gameActions }: OptionsProps) {
-    // return (
-    //     <div className="options">
-    //         <button onClick={gameActions.reset}>
-    //             <FontAwesomeIcon icon={faArrowsRotate} />
-    //         </button>
-    //     </div>
-    // )
-}
+export const Options: React.FC<OptionsProps> = ({ gameActions }) => {
+    return (
+        <div className="options">
+            <button onClick={gameActions.reset}>Reset</button>
+            <button onClick={gameActions.startGame}>Start</button>
+            {/* Add more options as needed */}
+        </div>
+    );
+};
