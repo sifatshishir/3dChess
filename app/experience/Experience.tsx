@@ -52,12 +52,22 @@ export function Experience({ game, gameActions }: ExperienceProps) {
 
     return (
         <>
+            <perspectiveCamera
+                makeDefault
+                position={[0, 3, 5]} // Initial camera position
+                fov={75} // Field of view
+                near={0.1} // Near clipping plane
+                far={1000} // Far clipping plane
+            />
             <OrbitControls
                 ref={controlsRef} // Assign the ref here
-                enablePan={false}
-                enableZoom={true}
-                maxPolarAngle={Math.PI / 2}
-                enableDamping={false}
+                enablePan={true} // Allow panning
+                enableZoom={true} // Allow zooming
+                maxPolarAngle={Math.PI / 2} // Limit vertical rotation
+                minDistance={1} // Minimum distance to the board
+                maxDistance={50} // Maximum distance to the board
+                enableDamping={true} // Smooth movement
+                dampingFactor={0.25} // Damping factor for smoother controls
             />
             <Lights />
             <GameBoard movePiece={movePiece} moves={moves} />
