@@ -70,7 +70,7 @@ export function useCameraPosition(status: GameStatus, controlsRef: React.RefObje
     }, []);
 
     const changeCameraPosition = useCallback((delta: number, current: Position, target: Position) => {
-        const stepRatio = delta * (_option.duration / 1000) * 25;
+        const stepRatio = delta * (_option.duration / 1000) * 20;
         const direction = {
             x: target.x - current.x,
             y: target.y - current.y,
