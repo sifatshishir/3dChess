@@ -16,8 +16,7 @@ The project incorporates the following technologies:
 * TypeScript
   
 ## Images
-![image](![image](https://github.com/user-attachments/assets/178c6fb5-a9ce-4401-8acf-30d4fdb748b8)
-)
+![image](https://github.com/user-attachments/assets/d60882ea-5485-435b-8456-e7a94bd3cbb6)
 
 
 
