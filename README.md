@@ -4,9 +4,9 @@
 * [Images](#images)
 
 ## General info
-I developed a 3D chess game using React and Three.js. The game features a fully functional chess board with pieces that can be moved by the user. The game also features a 3D camera that can be rotated around the board, allowing users to view the board from any angle. This project showcases my expertise in building complex web applications using modern front-end technologies and delivering high-quality, visually stunning user interfaces.<br/>
+I developed a 3D chess game using React and Three.js. The game features a fully functional chess board with pieces that can be moved by the user. The game also features a 3D camera that can be rotated around, pan and zooming the board, allowing users to view the board from any angle.
 
-[Link to game](https://3d-chess-tau.vercel.app/)
+[Link to game](https://3d-chess-tan.vercel.app/)
 ## Technologies
 The project incorporates the following technologies:
 
@@ -16,7 +16,8 @@ The project incorporates the following technologies:
 * TypeScript
   
 ## Images
-![image](https://res.cloudinary.com/dif8yy3on/image/upload/v1705150857/xi6szd0sljaor1jnvwou.png)
+![image](![image](https://github.com/user-attachments/assets/178c6fb5-a9ce-4401-8acf-30d4fdb748b8)
+)
 
 
 
